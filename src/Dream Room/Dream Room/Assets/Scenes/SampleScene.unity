@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 243365ab5dee5c44da3a3f5d9d7df22b, type: 2}
   m_HaloStrength: 0.5
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 4b9185dbdb5342d4490386a935ece56f, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -497,7 +497,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7ad85b37cde7c42b0f9a50e9413c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMaterial: {fileID: 2100000, guid: f6e3987d3933e994c9f2d15c4405f64a, type: 2}
 --- !u!1 &246660858
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,7 +1191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7ad85b37cde7c42b0f9a50e9413c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMaterial: {fileID: 2100000, guid: f6e3987d3933e994c9f2d15c4405f64a, type: 2}
 --- !u!1 &590737471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,7 +1323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7ad85b37cde7c42b0f9a50e9413c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMaterial: {fileID: 2100000, guid: f6e3987d3933e994c9f2d15c4405f64a, type: 2}
 --- !u!1 &668167336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1565,7 +1562,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1761,7 +1758,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7ad85b37cde7c42b0f9a50e9413c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMaterial: {fileID: 2100000, guid: f6e3987d3933e994c9f2d15c4405f64a, type: 2}
 --- !u!1 &872533295
 GameObject:
   m_ObjectHideFlags: 0
@@ -3017,6 +3013,81 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175176338}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1326546917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1326546919}
+  - component: {fileID: 1326546918}
+  m_Layer: 0
+  m_Name: Dream Environment Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1326546918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326546917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cbc69cdecb46a64fae6ca85a01c35d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stages:
+  - ambientColor: {r: 0.6, g: 0.75, b: 1, a: 0}
+    fogColor: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 0}
+    fogDensity: 0
+    highlightMaterial: {fileID: 2100000, guid: f6e3987d3933e994c9f2d15c4405f64a, type: 2}
+    hoverSound: {fileID: 8300000, guid: 8e01d1ec1573d8b458c58f9f77c671b0, type: 3}
+  - ambientColor: {r: 1, g: 0.7, b: 0.5, a: 0}
+    fogColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 0}
+    fogDensity: 0.003
+    highlightMaterial: {fileID: 2100000, guid: e149c9d6908fb5d4a9c8dd633da338fe, type: 2}
+    hoverSound: {fileID: 8300000, guid: 8e01d1ec1573d8b458c58f9f77c671b0, type: 3}
+  - ambientColor: {r: 0.9, g: 0.5, b: 1, a: 0}
+    fogColor: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 0}
+    fogDensity: 0.005
+    highlightMaterial: {fileID: 2100000, guid: 255b2aca1dc52f6449cdfb5c054e5ba8, type: 2}
+    hoverSound: {fileID: 8300000, guid: 2d154cebe61bbdd4a999aef6948186b9, type: 3}
+  - ambientColor: {r: 0.6, g: 0.8, b: 0.5, a: 0}
+    fogColor: {r: 0.5943396, g: 0.5915361, b: 0.5915361, a: 0}
+    fogDensity: 0.008
+    highlightMaterial: {fileID: 2100000, guid: 8014e564020c0124088c47631d79947e, type: 2}
+    hoverSound: {fileID: 8300000, guid: 2d154cebe61bbdd4a999aef6948186b9, type: 3}
+  - ambientColor: {r: 0.5, g: 0.1, b: 0.1, a: 0}
+    fogColor: {r: 0.41509432, g: 0.40530434, b: 0.40530434, a: 0}
+    fogDensity: 0.015
+    highlightMaterial: {fileID: 2100000, guid: 8478747f00e892b41945467a61788efb, type: 2}
+    hoverSound: {fileID: 8300000, guid: 2d154cebe61bbdd4a999aef6948186b9, type: 3}
+  - ambientColor: {r: 0.2, g: 0, b: 0.3, a: 0}
+    fogColor: {r: 0.31132078, g: 0.3069153, b: 0.3069153, a: 0}
+    fogDensity: 0.02
+    highlightMaterial: {fileID: 2100000, guid: 07f406be3cf1f8d498bf2729a3cfcb83, type: 2}
+    hoverSound: {fileID: 8300000, guid: 2d154cebe61bbdd4a999aef6948186b9, type: 3}
+--- !u!4 &1326546919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326546917}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1327503186
 GameObject:
   m_ObjectHideFlags: 0
@@ -3150,7 +3221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7ad85b37cde7c42b0f9a50e9413c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightMaterial: {fileID: 2100000, guid: f6e3987d3933e994c9f2d15c4405f64a, type: 2}
 --- !u!1 &1363307801
 GameObject:
   m_ObjectHideFlags: 0
@@ -4478,3 +4548,4 @@ SceneRoots:
   - {fileID: 1327503190}
   - {fileID: 1102398500}
   - {fileID: 1558828096}
+  - {fileID: 1326546919}

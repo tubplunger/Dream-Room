@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class HoverableObject : MonoBehaviour
 {
-    private Material originalMaterial;
-    public Material highlightMaterial;
+    public static Material currentHighlightMaterial;
 
+    private Material originalMaterial;
     private Renderer rend;
 
     void Start()
@@ -17,9 +17,9 @@ public class HoverableObject : MonoBehaviour
 
     public void OnHoverEnter()
     {
-        if (highlightMaterial != null)
+        if (currentHighlightMaterial != null)
         {
-            rend.material = highlightMaterial;
+            rend.material = currentHighlightMaterial;
         }
     }
 

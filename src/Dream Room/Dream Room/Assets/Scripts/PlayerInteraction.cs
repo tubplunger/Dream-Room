@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    public static PlayerInteraction Instance;
+
+    [Header("Interaction")]
     public float interactDistance = 5f;
     public Camera playerCamera;
 
@@ -12,6 +15,16 @@ public class PlayerInteraction : MonoBehaviour
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip hoverSound;
+
+    void Awake()
+    {
+        Instance = this;
+    }
+
+    public void SetHoverSound(AudioClip newSound)
+    {
+        hoverSound = newSound;
+    }
 
     void Update()
     {
@@ -35,7 +48,7 @@ public class PlayerInteraction : MonoBehaviour
             newHover = hit.collider.GetComponent<HoverableObject>();
         }
 
-        // looking at a new object
+        // If looking at a new object
         if (newHover != currentHover)
         {
             // Remove highlight from old one
@@ -49,10 +62,19 @@ public class PlayerInteraction : MonoBehaviour
             {
                 newHover.OnHoverEnter();
 
+                // Play hover sound
                 if (audioSource != null && hoverSound != null)
                 {
-                    audioSource.PlayOneShot(hoverSound);
-                } 
+                    // If it's a static sound, play a short burst
+                    if (hoverSound.name.Contains("Static"))
+                    {
+                        StartCoroutine(PlayShortSound(hoverSound, 0.1f));
+                    }
+                    else
+                    {
+                        audioSource.PlayOneShot(hoverSound);
+                    }
+                }
             }
 
             currentHover = newHover;
@@ -68,5 +90,17 @@ public class PlayerInteraction : MonoBehaviour
         {
             hit.collider.SendMessage("Interact", SendMessageOptions.DontRequireReceiver);
         }
+    }
+
+    IEnumerator PlayShortSound(AudioClip clip, float duration)
+    {
+        if (audioSource == null || clip == null) yield break;
+
+        audioSource.clip = clip;
+        audioSource.Play();
+
+        yield return new WaitForSeconds(duration);
+
+        audioSource.Stop();
     }
 }

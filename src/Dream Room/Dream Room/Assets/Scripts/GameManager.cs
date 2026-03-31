@@ -24,6 +24,6 @@ public class GameManager : MonoBehaviour
         dreamLevel++;
         Debug.Log("Dream level increased to: " + dreamLevel);
 
-        // lighting/audio changes here
+        DreamEnvironmentManager.Instance.ApplyStage(dreamLevel);
     }
 }
