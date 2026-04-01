@@ -6,12 +6,18 @@ public class DreamEnvironmentManager : MonoBehaviour
 {
     public static DreamEnvironmentManager Instance;
 
+    public Light mainLight;
+
     [System.Serializable]
     public class DreamStage
     {
         public Color ambientColor;
+        public float ambientIntensity = 1f; // 0-1
         public Color fogColor;
         public float fogDensity;
+
+        public Color lightColor;
+        public float lightIntensity;
 
         public Material highlightMaterial;
         public AudioClip hoverSound;
@@ -42,23 +48,31 @@ public class DreamEnvironmentManager : MonoBehaviour
         Color startAmbient = RenderSettings.ambientLight;
         Color startFogColor = RenderSettings.fogColor;
         float startFogDensity = RenderSettings.fogDensity;
+        Color targetAmbient = targetStage.ambientColor * targetStage.ambientIntensity;
+        Color startLightColor = mainLight.color;
+        float startLightIntensity = mainLight.intensity;
 
         while (time < duration)
         {
             float t = time / duration;
 
-            RenderSettings.ambientLight = Color.Lerp(startAmbient, targetStage.ambientColor, t);
+            RenderSettings.ambientLight = Color.Lerp(startAmbient, targetAmbient, t);
             RenderSettings.fogColor = Color.Lerp(startFogColor, targetStage.fogColor, t);
             RenderSettings.fogDensity = Mathf.Lerp(startFogDensity, targetStage.fogDensity, t);
+            mainLight.color = Color.Lerp(startLightColor, targetStage.lightColor, t);
+            mainLight.intensity = Mathf.Lerp(startLightIntensity, targetStage.lightIntensity, t);
 
             time += Time.deltaTime;
             yield return null;
         }
 
         // Snap to final values (ensures accuracy)
-        RenderSettings.ambientLight = targetStage.ambientColor;
+        RenderSettings.ambientLight = targetAmbient;
         RenderSettings.fogColor = targetStage.fogColor;
         RenderSettings.fogDensity = targetStage.fogDensity;
+
+        mainLight.color = targetStage.lightColor;
+        mainLight.intensity = targetStage.lightIntensity;
 
         // Apply non-lerped stuff AFTER transition
         HoverableObject.currentHighlightMaterial = targetStage.highlightMaterial;

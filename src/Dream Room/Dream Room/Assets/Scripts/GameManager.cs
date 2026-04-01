@@ -19,6 +19,11 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
+    void Start()
+    {
+        DreamEnvironmentManager.Instance.ApplyStage(dreamLevel);
+    }
+
     public void IncreaseDreamLevel()
     {
         dreamLevel++;
