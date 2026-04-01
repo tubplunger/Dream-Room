@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TextBattlerObject : MonoBehaviour
 {
+    public GameObject textUI;
+
     public void Interact()
     {
         if (!GameManager.Instance.colorSolved)
@@ -14,8 +16,17 @@ public class TextBattlerObject : MonoBehaviour
 
         Debug.Log("Text Battler started.");
 
+        MinigameManager.Instance.StartMinigame(textUI);
+    }
+
+    public void CompleteText()
+    {
+        Debug.Log("Text Battler finished");
+
         GameManager.Instance.textBattlerComplete = true;
         GameManager.Instance.IncreaseDreamLevel();
+
+        MinigameManager.Instance.EndMinigame();
 
         CheckFinalUnlock();
     }

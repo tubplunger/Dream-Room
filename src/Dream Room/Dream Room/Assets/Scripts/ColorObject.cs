@@ -7,15 +7,27 @@ public class ColorObject : MonoBehaviour
     public Color correctColor = Color.red;
     private bool solved = false;
 
+    public GameObject colorUI;
+
     public void Interact()
     {
         Debug.Log("Color puzzle opened.");
 
-        // simulate color
-        CheckColor(Color.red); // replace with actual input
+        if (colorUI == null)
+        {
+            Debug.LogError("Color UI is NOT assigned!");
+            return;
+        }
+
+        MinigameManager.Instance.StartMinigame(colorUI);
     }
 
-    void CheckColor(Color chosenColor)
+    public void ChooseRed()
+    {
+        CheckColor(Color.red);
+    }
+
+    public void CheckColor(Color chosenColor)
     {
         if (chosenColor == correctColor && !solved)
         {
@@ -26,8 +38,14 @@ public class ColorObject : MonoBehaviour
             GameManager.Instance.colorSolved = true;
             GameManager.Instance.IncreaseDreamLevel();
 
+            MinigameManager.Instance.EndMinigame();
+
             UnlockNextGames();
             ChangeRoomColor(chosenColor);
+        }
+        else
+        {
+            Debug.Log("Wrong color!");
         }
     }
 

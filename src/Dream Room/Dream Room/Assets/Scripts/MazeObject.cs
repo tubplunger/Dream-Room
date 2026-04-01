@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MazeObject : MonoBehaviour
 {
+    public GameObject mazeUI;
+
     public void Interact()
     {
         if (!GameManager.Instance.colorSolved)
@@ -14,8 +16,17 @@ public class MazeObject : MonoBehaviour
 
         Debug.Log("Maze Started.");
 
+        MinigameManager.Instance.StartMinigame(mazeUI);
+    }
+
+    public void CompleteMaze()
+    {
+        Debug.Log("Maze finished");
+
         GameManager.Instance.mazeComplete = true;
         GameManager.Instance.IncreaseDreamLevel();
+
+        MinigameManager.Instance.EndMinigame();
 
         CheckFinalUnlock();
     }
