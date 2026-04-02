@@ -8,7 +8,7 @@ public class MazeObject : MonoBehaviour
 
     public void Interact()
     {
-        if (!GameManager.Instance.colorSolved)
+        if (!GameManager.Instance.mazeUnlocked)
         {
             Debug.Log("Maze is locked!");
             return;

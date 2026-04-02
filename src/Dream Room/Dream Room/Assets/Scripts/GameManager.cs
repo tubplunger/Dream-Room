@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public bool textBattlerComplete = false;
     public bool guessesUnlocked = false;
 
+    public bool mazeUnlocked = false;
+    public bool textBattlerUnlocked = false;
+
     public int dreamLevel = 0;
 
     void Awake()

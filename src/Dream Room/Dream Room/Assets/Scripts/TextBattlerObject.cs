@@ -8,7 +8,7 @@ public class TextBattlerObject : MonoBehaviour
 
     public void Interact()
     {
-        if (!GameManager.Instance.colorSolved)
+        if (!GameManager.Instance.textBattlerUnlocked)
         {
             Debug.Log("Text Battler is locked.");
             return;
