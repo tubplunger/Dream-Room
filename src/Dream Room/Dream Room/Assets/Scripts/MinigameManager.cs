@@ -48,5 +48,10 @@ public class MinigameManager : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        if (PlayerInteraction.Instance != null)
+        {
+            PlayerInteraction.Instance.ClearHover();
+        }
     }
 }

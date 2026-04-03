@@ -28,11 +28,27 @@ public class PlayerInteraction : MonoBehaviour
 
     void Update()
     {
+        if (MinigameManager.Instance != null &&
+        MinigameManager.Instance.isMinigameActive)
+        {
+            ClearHover();
+            return;
+        }
+
         HandleHover();
 
         if (Input.GetMouseButtonDown(0))
         {
             TryClick();
+        }
+    }
+
+    public void ClearHover()
+    {
+        if (currentHover != null)
+        {
+            currentHover.OnHoverExit();
+            currentHover = null;
         }
     }
 
@@ -83,6 +99,12 @@ public class PlayerInteraction : MonoBehaviour
 
     void TryClick()
     {
+        if (MinigameManager.Instance != null &&
+        MinigameManager.Instance.isMinigameActive)
+        {
+            return;
+        }
+
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 

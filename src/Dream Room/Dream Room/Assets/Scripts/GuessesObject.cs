@@ -16,7 +16,6 @@ public class GuessesObject : MonoBehaviour
 
         Debug.Log("Final game started.");
 
-        GameManager.Instance.guessesUnlocked = true;
         MinigameManager.Instance.StartMinigame(guessesUI);
     }
 
@@ -30,7 +29,9 @@ public class GuessesObject : MonoBehaviour
 
     private IEnumerator EndGameSequence()
     {
-        yield return new WaitForSecondsRealtime(6f);
+        yield return StartCoroutine(FadeManager.instance.FadeOut(2f));
+
+        yield return new WaitForSecondsRealtime(1f);
 
 #if UNITY_EDITOR
     UnityEditor.EditorApplication.isPlaying = false;
